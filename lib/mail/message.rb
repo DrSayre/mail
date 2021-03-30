@@ -255,7 +255,9 @@ module Mail
     #  mail = Mail.read('file.eml')
     #  mail.deliver
     def deliver
+      print "\n************\nbefore inform_interceptors: #{perform_deliveries}\n***********\n"
       inform_interceptors
+      print "\n************\nafter inform_interceptors: #{perform_deliveries}\n***********\n"
       if delivery_handler
         delivery_handler.deliver_mail(self) { do_delivery }
       else
