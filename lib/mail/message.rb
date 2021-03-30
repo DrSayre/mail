@@ -2155,7 +2155,9 @@ module Mail
 
     def do_delivery
       begin
+        print "\n******* perform_deliveries: #{perform_deliveries} *******\n"
         if perform_deliveries
+          self "\n********\nmail: #{self.inspect}\n*******\n"
           delivery_method.deliver!(self)
         end
       rescue => e # Net::SMTP errors or sendmail pipe errors
